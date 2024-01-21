@@ -1,10 +1,9 @@
 export default function AboutMe() {
   return (
-    <section id="AboutMe">
-      <video className="about-me-video" src='/videos/about_me_bg_2.mp4' autoPlay loop muted />
-      <div className="about--section">
+    <section id="AboutMe" className="about--section">
+      <video className="about--me--video" src={process.env.PUBLIC_URL + '/videos/about_me_bg_2.mp4'} autoPlay loop muted />
         <div className="about--section--img">
-          <img src="/images/about_me.jpg" alt="About Me" />
+          <img src={process.env.PUBLIC_URL + "/images/about_me.jpg"} alt="About Me" />
         </div>
         <div className="hero--section--content--box about--section--box">
           <div className="hero--section--content">
@@ -22,7 +21,6 @@ export default function AboutMe() {
             </p>
           </div>
         </div>
-      </div>
     </section>
   );
 }

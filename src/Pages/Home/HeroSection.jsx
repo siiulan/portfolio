@@ -22,7 +22,7 @@ export default function HeroSection() {
 
   return (
     <section id="heroSectionCover">
-      <video src='/videos/video-4.mp4' autoPlay loop muted />
+      <video className = "hero--section--video" src= {process.env.PUBLIC_URL + '/videos/video-4.mp4'} autoPlay loop muted />
       <section id="heroSection" className="hero--section">
       <div className="hero--section--content--box">
         <div className="hero--section--content">
@@ -40,8 +40,8 @@ export default function HeroSection() {
             </span>
           ))}
           </p>
+          <button onClick={() => handleButtonClick('connect')} className="btn btn-primary">Connect</button>
         </div>
-        <button onClick={() => handleButtonClick('connect')} className="btn btn-primary">Connect</button>
       </div>
       {/* <div className="hero--section--img">
         <img src="./img/logo-expansion.png" alt="Hero Section" />

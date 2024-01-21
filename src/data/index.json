@@ -2,25 +2,25 @@
   "skills": [
     {
       "id": "1",
-      "src": "./img/product-chain-1.png",
+      "src": "/img/product-chain-1.png",
       "title": "Front-End",
       "description": "Javascript Frameworks (Angular & React), Typescript, Javascript, HTML, CSS/SCSS, Rxjs, next.js"
     },
     {
       "id": "2",
-      "src": "./img/tag-1.png",
+      "src": "/img/tag-1.png",
       "title": "Back-End",
       "description": "Embedded Software RESTful API developement and maintainence using c++/c, OpenAPI Schema validation automation using python, Websocket Server and Client developement usin c++/c and python"
     },
     {
       "id": "3",
-      "src": "./img/feather-pen-2.png",
+      "src": "/img/feather-pen-2.png",
       "title": "UI & UX Design",
       "description": "Graphic design using Adobe Photoshop, Adobe Illustrator, and Figma. User Experience and Flow Design using Figma"
     },
     {
       "id": "4",
-      "src": "./img/feather-pen-1.png",
+      "src": "/img/feather-pen-1.png",
       "title": "Cloud Service",
       "description": "Terraform, AWS Services: EC2, Lambda functions, DynamoDB,  S3, IoT Core, API Gateway"
     }
@@ -28,7 +28,7 @@
   "portfolio": [
     {
       "id": "1",
-      "src": "./img/placeholder-image.png",
+      "src": "/img/placeholder-image.png",
       "title": "Ahuse",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique",
       "link": "View In Github"
