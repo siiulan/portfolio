@@ -7,7 +7,7 @@ function Footer() {
     <footer className="footer--container">
       <div className="footer--link--container">
         <div>
-          <img src={process.env.PUBLIC_URL + "/img/logo-expansion.svg"} alt="Personal Blog" />
+          <img src={process.env.PUBLIC_URL + "/img/Logo-expansion.svg"} alt="Personal Blog" />
         </div>
         {/* <div className="footer--items">
           <ul>

@@ -190,13 +190,15 @@ h2 {
 .hero--section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 133.333px 85.333px 133.333px;
+  /* padding: 133.333px 85.333px 133.333px; */
+  padding: 0px 0px 133.333px;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
   /* background-color: var(--bg-shade); */
 }
-.hero--section--content-box {
+.hero--section--content--box {
+  padding: 20px 85.333px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -311,7 +313,7 @@ h2 {
 /* About Us */
 .about--section {
   display: grid;
-  padding: 80px 0px;
+  padding: 0px 0px;
   align-items: center;
   gap: 114.6px;
   grid-template-columns: repeat(2, 1fr);

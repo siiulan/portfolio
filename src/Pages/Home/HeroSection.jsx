@@ -21,9 +21,8 @@ export default function HeroSection() {
   const overview = ['Innovative software engineer driven by the passion to arts and design', 'Compassionate and knowledgeable programming educator that supports students of all ages and levels']
 
   return (
-    <section id="heroSectionCover">
+    <section id="heroSectionCover" className="hero--section">
       <video className = "hero--section--video" src= {process.env.PUBLIC_URL + '/videos/video-4.mp4'} autoPlay loop muted />
-      <section id="heroSection" className="hero--section">
       <div className="hero--section--content--box">
         <div className="hero--section--content">
           <p className="section--title">Full Stack Developer & Graphic Designer</p>
@@ -46,7 +45,6 @@ export default function HeroSection() {
       {/* <div className="hero--section--img">
         <img src="./img/logo-expansion.png" alt="Hero Section" />
       </div> */}
-    </section>
     </section>
   );
 }
