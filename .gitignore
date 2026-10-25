@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+
 # testing
 /coverage
 
@@ -22,3 +23,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 node_modules
+
+# private career material (root only; src/assets is site content)
+/assets
+
+# vite
+/dist
+*.tsbuildinfo
