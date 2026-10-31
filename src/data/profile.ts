@@ -11,7 +11,7 @@ export const profile = {
   role: "Full-stack Engineer · Team Lead",
   company: "Evertz Microsystems",
   location: "Toronto, ON, Canada",
-  email: "siiulan79@gmail.com",
+  email: "ryancanusemuse@gmail.com",
   links: {
     github: "https://github.com/siiulan",
     linkedin: "https://www.linkedin.com/in/ryan-gao-752a3715a/",
