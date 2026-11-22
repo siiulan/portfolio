@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "logo": "node scripts/make-logo-mark.mjs",
-    "predeploy": "npm run build",
+    "predeploy": "BASE_PATH=/portfolio/ npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
