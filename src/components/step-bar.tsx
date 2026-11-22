@@ -42,7 +42,8 @@ export function StepBar({ sections, index, onSelect }: Props) {
                       className={cn(
                         "eyebrow transition-all duration-300 ease-out-expo",
                         active
-                          ? "translate-x-0 text-white opacity-100"
+                          ? // wide screens only: on narrower ones the label would sit over the content
+                            "translate-x-0 text-white opacity-0 group-hover:opacity-100 min-[1600px]:opacity-100"
                           : "translate-x-1 text-white/70 opacity-0 group-hover:translate-x-0 group-hover:opacity-100",
                       )}
                     >
