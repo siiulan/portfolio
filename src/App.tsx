@@ -9,19 +9,14 @@ import { About } from "@/components/sections/about";
 import { Projects } from "@/components/sections/projects";
 import { Contact } from "@/components/sections/contact";
 import { useSectionNav } from "@/hooks/use-section-nav";
+import { NotFoundNotice } from "@/components/not-found-notice";
+import { SECTIONS, SECTION_IDS } from "@/lib/routes";
 
 // Module-level so WaveMesh's effect (keyed on `colors`) doesn't rebuild its canvas on every render.
 const MESH_COLORS: [string, string, string] = ["#07080c", "#8f97a8", "#ff8a4c"];
 
-const SECTIONS = [
-  { id: "home", label: "Index" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
-];
-const IDS = SECTIONS.map((s) => s.id);
-const PROJECTS = IDS.indexOf("projects");
-const CONTACT = IDS.indexOf("contact");
+const PROJECTS = SECTION_IDS.indexOf("projects");
+const CONTACT = SECTION_IDS.indexOf("contact");
 
 const page: Variants = {
   hidden: (dir: number) => ({ opacity: 0, y: dir * 56 }),
@@ -46,7 +41,7 @@ function ripple() {
 }
 
 export default function App() {
-  const { index, dir, goTo } = useSectionNav({ count: SECTIONS.length, ids: IDS });
+  const { index, dir, goTo, notFound } = useSectionNav({ count: SECTIONS.length, ids: SECTION_IDS });
 
   const first = useRef(true);
   useEffect(() => {
@@ -92,6 +87,7 @@ export default function App() {
         </main>
 
         <StepBar sections={SECTIONS} index={index} onSelect={goTo} />
+        <NotFoundNotice signal={notFound} />
       </WaveMesh>
       </div>
     </MotionConfig>

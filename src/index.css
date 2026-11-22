@@ -16,12 +16,13 @@
     from { transform: translateX(-100%); }
     to { transform: translateX(100%); }
   }
+}
 
-  /* fills a showcase progress segment; duration set inline to match the slide interval */
-  @keyframes fill {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-  }
+/* Fills a showcase progress segment; duration set inline to match the slide interval.
+   Kept outside @theme: Tailwind only emits theme keyframes that an --animate-* variable uses. */
+@keyframes fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @layer base {

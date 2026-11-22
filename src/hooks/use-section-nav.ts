@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { currentRoute } from "@/lib/routes";
 
 type Options = {
   count: number;
@@ -16,6 +17,11 @@ const MIN_SWIPE_DELTA = 8;
 const SWIPE_THRESHOLD = 48;
 
 /** True when an element under the pointer can still scroll in the given direction, so the page shouldn't. */
+// The URL is resolved once at startup (StrictMode would otherwise run it twice, and the second
+// run would see the already-corrected URL and miss that the original was not found).
+let boot: ReturnType<typeof currentRoute> | null = null;
+const bootRoute = () => (boot ??= currentRoute());
+
 function innerCanScroll(target: EventTarget | null, dir: 1 | -1) {
   let el = target instanceof Element ? target : null;
   while (el && el !== document.body) {
@@ -32,20 +38,23 @@ function innerCanScroll(target: EventTarget | null, dir: 1 | -1) {
 }
 
 export function useSectionNav({ count, ids, paused = false }: Options) {
-  const initial = Math.max(0, ids.indexOf(location.hash.slice(1)));
+  const initial = bootRoute().route.index;
   const [state, setState] = useState({ index: initial, dir: 1 as 1 | -1 });
+  /** Bumped each time a URL named a page that doesn't exist; drives the "not found" notice. */
+  const [notFound, setNotFound] = useState(() => (bootRoute().found ? 0 : 1));
   const indexRef = useRef(initial);
   const pausedRef = useRef(paused);
   pausedRef.current = paused;
 
+  /** Pages to a section. `hash` keeps a sub-route (#projects/wealthwego) instead of the bare id. */
   const goTo = useCallback(
-    (next: number) => {
+    (next: number, hash?: string) => {
       const clamped = Math.min(count - 1, Math.max(0, next));
       const cur = indexRef.current;
       if (clamped === cur) return;
       indexRef.current = clamped;
       setState({ index: clamped, dir: clamped > cur ? 1 : -1 });
-      history.replaceState(null, "", `#${ids[clamped]}`);
+      history.replaceState(null, "", hash ?? `#${ids[clamped]}`);
     },
     [count, ids],
   );
@@ -145,9 +154,11 @@ export function useSectionNav({ count, ids, paused = false }: Options) {
       }
     };
 
+    // Typed or linked URLs: resolve, correct the address bar, and go to the closest valid page.
     const onHash = () => {
-      const i = ids.indexOf(location.hash.slice(1));
-      if (i >= 0) goTo(i);
+      const r = currentRoute();
+      if (!r.found) setNotFound((n) => n + 1);
+      goTo(r.route.index, r.canonical);
     };
 
     window.addEventListener("wheel", onWheel, { passive: true });
@@ -164,5 +175,5 @@ export function useSectionNav({ count, ids, paused = false }: Options) {
     };
   }, [count, ids, goTo]);
 
-  return { index: state.index, dir: state.dir, goTo };
+  return { index: state.index, dir: state.dir, goTo, notFound };
 }

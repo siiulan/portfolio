@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Ryan Gao</title>
+    <script>
+      // GitHub Pages serves this file for any path that doesn't exist. The site routes by hash,
+      // so hand the path over as one: /portfolio/projects/wealthwego → /portfolio/#projects/wealthwego.
+      // The app then resolves it (unknown routes go to the closest valid page; see src/lib/routes.ts).
+      // Keep BASE in sync with `base` in vite.config.ts (files in public/ aren't processed by Vite).
+      (function () {
+        var BASE = "/portfolio/";
+        var path = location.pathname;
+        var rest = path.indexOf(BASE) === 0 ? path.slice(BASE.length).replace(/\/+$/, "") : "";
+        location.replace(BASE + (rest ? "#" + rest : location.hash));
+      })();
+    </script>
+  </head>
+  <body style="background: #07080c">
+    <noscript><a href="/portfolio/" style="color: #ff8a4c">Go to the portfolio</a></noscript>
+  </body>
+</html>
