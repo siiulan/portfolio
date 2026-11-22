@@ -9,7 +9,7 @@ import { projects } from "@/data/profile";
  *   #projects/x → #projects                 (unknown detail: its parent section)
  *   #about/x    → #about                    (section without details: the section)
  *   #nonsense   → #home                     (unknown section: home)
- *   /portfolio/projects/wealthwego → #projects/wealthwego   (path-style links)
+ *   /projects/wealthwego → #projects/wealthwego   (path-style links, under the site's base)
  * The address bar is corrected with replaceState, so Back never returns to the bad URL.
  */
 
@@ -71,9 +71,9 @@ export function currentRoute() {
 }
 
 /**
- * Turns a path below the site root into a hash route: /portfolio/projects/x → /portfolio/#projects/x.
- * On GitHub Pages, public/404.html does the same before the app loads; in dev and preview,
- * Vite serves the app for any path, so it's done here.
+ * Turns a path below the site root into a hash route: /projects/x → /#projects/x.
+ * Cloudflare (single-page-app fallback), Vite dev and preview serve the app for any path, so it's
+ * done here; on GitHub Pages, public/404.html does the same before the app loads.
  */
 function pathToHash() {
   const base = import.meta.env.BASE_URL;

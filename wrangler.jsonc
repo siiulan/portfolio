@@ -1,0 +1,20 @@
+// Cloudflare Worker config for the portfolio at siiulan.dev.
+// Workers Builds: build command `npm run build`, deploy command `npx wrangler deploy`.
+// The name MUST match the Worker in the dashboard. Custom domains (siiulan.dev, www., portfolio.)
+// are attached in the dashboard: Worker → Settings → Domains & Routes.
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "portfolio",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-11-01",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Paths that aren't files (siiulan.dev/projects/wealthwego) get index.html; the app routes them.
+    "not_found_handling": "single-page-application",
+    // The Worker sees every request so it can redirect www. and portfolio. to siiulan.dev.
+    "run_worker_first": true,
+  },
+  "observability": { "enabled": true },
+}
